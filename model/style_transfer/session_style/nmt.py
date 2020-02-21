@@ -1279,6 +1279,8 @@ def train(dim_word=100,  # word vector dimensionality
     print 'Valid ', valid_err
 
     params = copy.copy(best_p)
+    if params is None: params = tparams
+    pkl.dump(model_options, open('%s.pkl' % saveto, 'wb')) 
     numpy.savez(saveto, zipped_params=best_p,
                 history_errs=history_errs,
                 uidx=uidx,
